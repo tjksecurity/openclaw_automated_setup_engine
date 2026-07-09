@@ -193,7 +193,7 @@ export function DeployStep({
                 OpenClaw is live. Open the dashboard to see your agents at work.
               </span>
               <a
-                href="/"
+                href="/dashboard"
                 className="rounded-md bg-emerald-500 px-3 py-1.5 text-xs font-medium text-black hover:bg-emerald-400"
               >
                 Open dashboard →

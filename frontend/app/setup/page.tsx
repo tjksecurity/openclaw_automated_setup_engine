@@ -145,7 +145,7 @@ export default function SetupPage() {
                 Demo mode
               </span>
             )}
-            <Link href="/" className="rounded border border-zinc-700 px-2 py-1 text-zinc-300 hover:bg-zinc-800">
+            <Link href="/dashboard" className="rounded border border-zinc-700 px-2 py-1 text-zinc-300 hover:bg-zinc-800">
               Dashboard
             </Link>
           </div>
