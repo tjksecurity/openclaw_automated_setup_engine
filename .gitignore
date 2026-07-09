@@ -1,29 +1,14 @@
-# Python
-__pycache__/
-*.py[cod]
-.venv/
-venv/
-*.egg-info/
-.pytest_cache/
-
-# Env / secrets
-.env
-.env.local
-
-# Node / Next
 node_modules/
 .next/
 out/
 frontend/tsconfig.tsbuildinfo
+tsconfig.tsbuildinfo
 npm-debug.log*
 yarn-error.log*
-
-# OpenClaw user-specific state
-config/openclaw.json
-config/agents.json
-
-# OS / editor
 .DS_Store
 *.swp
 .idea/
 .vscode/
+# User's local OpenClaw config never gets committed
+.openclaw/
+config/openclaw.json
