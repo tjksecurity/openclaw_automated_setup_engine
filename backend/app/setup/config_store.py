@@ -21,7 +21,12 @@ from pathlib import Path
 from typing import Any
 
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
+import os as _os
+
+# REPO_ROOT is where deploy writes .env / config/agents.json. Overridable
+# via env — Vercel's serverless runtime points this at /tmp/openclaw, where
+# writes are actually permitted.
+REPO_ROOT = Path(_os.environ.get("OPENCLAW_REPO_ROOT", str(Path(__file__).resolve().parents[3])))
 CONFIG_DIR = REPO_ROOT / "config"
 CONFIG_PATH = CONFIG_DIR / "openclaw.json"
 
