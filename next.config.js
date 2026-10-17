@@ -1,9 +1,15 @@
+const path = require("node:path");
+const os = require("node:os");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Emit a self-contained Node server bundle under .next/standalone. The
-  // bin script (bin/openclaw-setup-engine.js) runs it directly with node.
   output: "standalone",
+  experimental: {
+    outputFileTracingRoot: __dirname,
+    // Operator-selected OpenClaw configuration is runtime data, not a package asset.
+    // Ignore before NFT globs it; post-trace excludes cannot prevent Windows EPERM.
+    outputFileTracingIgnores: [path.relative(__dirname, os.homedir()).replace(/\\/g, "/") + "/**/*"],
+  },
 };
-
 module.exports = nextConfig;
