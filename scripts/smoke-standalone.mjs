@@ -2,6 +2,26 @@ import { spawn } from 'node:child_process';
 import { once } from 'node:events';
 import { createServer } from 'node:net';
 import { setTimeout as delay } from 'node:timers/promises';
+import { readdir, readFile } from 'node:fs/promises';
+import path from 'node:path';
+import os from 'node:os';
+
+const inside = (parent, file) => {
+  const relative = path.relative(parent, file);
+  return relative === '' || (!relative.startsWith('..' + path.sep) && relative !== '..' && !path.isAbsolute(relative));
+};
+for (const name of await readdir('.next', { recursive: true })) {
+  if (!name.endsWith('.nft.json')) continue;
+  const manifest = path.resolve('.next', name);
+  const { files } = JSON.parse(await readFile(manifest, 'utf8'));
+  for (const file of files) {
+    const asset = path.resolve(path.dirname(manifest), file);
+    if (inside(os.homedir(), asset) && !inside(process.cwd(), asset)) {
+      throw new Error('Standalone trace contains operator-home data outside the project.');
+    }
+  }
+}
+console.log('All tracing manifests exclude operator-home assets outside the project.');
 
 const reservation = createServer();
 reservation.listen(0, '127.0.0.1');
