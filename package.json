@@ -2,7 +2,13 @@
   "name": "openclaw-setup-engine",
   "version": "0.2.0",
   "description": "Local web-based setup wizard for OpenClaw. Installs OpenClaw, writes ~/.openclaw/openclaw.json, wires up messaging channels, and starts the daemon.",
-  "keywords": ["openclaw", "setup", "wizard", "agent", "cli"],
+  "keywords": [
+    "openclaw",
+    "setup",
+    "wizard",
+    "agent",
+    "cli"
+  ],
   "homepage": "https://github.com/tjksecurity/openclaw_automated_setup_engine",
   "repository": {
     "type": "git",
@@ -32,7 +38,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "next": "14.2.15",
+    "next": "14.2.35",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
